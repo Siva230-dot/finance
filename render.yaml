@@ -1,0 +1,41 @@
+# Render Blueprint — free web service for the FastAPI backend.
+# Database is Supabase Free PostgreSQL (NOT Render's expiring free Postgres).
+services:
+  - type: web
+    name: ai-financemate-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    region: singapore
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    # Migrations run on every start; they are idempotent (alembic upgrade head).
+    startCommand: alembic upgrade head && gunicorn app.main:app -k uvicorn.workers.UvicornWorker --workers 1 --bind 0.0.0.0:$PORT --timeout 120 --graceful-timeout 30
+    healthCheckPath: /api/v1/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: APP_ENV
+        value: production
+      - key: APP_NAME
+        value: AI_FinanceMate
+      - key: LOG_LEVEL
+        value: INFO
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: MAX_UPLOAD_SIZE_MB
+        value: "10"
+      - key: JWT_SECRET_KEY
+        generateValue: true      # Render generates a strong random secret
+      - key: GROQ_API_KEY
+        sync: false              # set in the Render dashboard
+      - key: DATABASE_URL
+        sync: false              # Supabase session-pooler URL with ?sslmode=require
+      - key: FRONTEND_URL
+        sync: false              # https://<your-project>.vercel.app
+      - key: CORS_ORIGINS
+        sync: false              # same as FRONTEND_URL (comma separated if several)

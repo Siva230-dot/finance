@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <title>A sealed letter with a gold wax seal on forest-green leather</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c4636"/><stop offset="1" stop-color="#16231b"/></linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6eedb"/><stop offset="1" stop-color="#e3d4b3"/></linearGradient>
+    <radialGradient id="wax" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#e8c77e"/><stop offset=".6" stop-color="#a8813d"/><stop offset="1" stop-color="#6a4d1f"/></radialGradient>
+    <radialGradient id="vig" cx=".5" cy=".45" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></radialGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="6" dy="18" stdDeviation="16" flood-color="#050a07" flood-opacity=".6"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 .1  0 0 0 0 .15  0 0 0 0 .1  0 0 0 .35 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1120" height="820" rx="10" fill="none" stroke="#a58b58" stroke-opacity=".4" stroke-width="2" stroke-dasharray="2 10"/>
+  <!-- letter -->
+  <g filter="url(#sh)" transform="rotate(-6 520 430)">
+    <rect x="260" y="170" width="520" height="560" fill="url(#paper)"/>
+    <g fill="#3a3a2c" opacity=".78" font-family="Georgia,serif" font-style="italic" font-size="22">
+      <text x="300" y="232">Dear Aarav,</text>
+    </g>
+    <g stroke="#3a3a2c" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round" fill="none">
+      <path d="M300 272 h400"/><path d="M300 306 h370"/><path d="M300 340 h410"/><path d="M300 374 h300"/>
+      <path d="M300 430 h390"/><path d="M300 464 h340"/><path d="M300 498 h380"/>
+    </g>
+    <g fill="#25382d" font-family="Georgia,serif" font-size="20"><text x="300" y="560">Food budget used ··· 72%</text><text x="300" y="594">Laptop goal ········· 42%</text></g>
+    <text x="560" y="672" font-family="Georgia,serif" font-style="italic" font-size="30" fill="#25382d">— Jocasta</text>
+  </g>
+  <!-- envelope -->
+  <g filter="url(#sh)" transform="rotate(8 830 560)">
+    <rect x="610" y="420" width="470" height="300" fill="#efe4c9"/>
+    <path d="M610 420 L845 590 L1080 420" fill="#e2d4b2" stroke="#cbb88d" stroke-width="2"/>
+    <circle cx="845" cy="585" r="48" fill="url(#wax)"/>
+    <circle cx="845" cy="585" r="34" fill="none" stroke="#7a5a26" stroke-width="2.5"/>
+    <text x="845" y="600" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="40" fill="#5e4319">J</text>
+  </g>
+  <!-- sprig -->
+  <g stroke="#89917c" stroke-width="3" fill="#5a6751" opacity=".85">
+    <path d="M140 760 C220 700 280 640 330 560" fill="none"/>
+    <ellipse cx="190" cy="720" rx="22" ry="9" transform="rotate(-40 190 720)"/><ellipse cx="240" cy="672" rx="22" ry="9" transform="rotate(-50 240 672)"/><ellipse cx="290" cy="620" rx="22" ry="9" transform="rotate(-60 290 620)"/>
+  </g>
+  <rect width="1200" height="900" fill="url(#vig)"/>
+  <rect width="1200" height="900" filter="url(#grain)" opacity=".5"/>
+</svg>

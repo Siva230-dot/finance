@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens as RGB triplets so Tailwind can apply alpha. */
+:root,
+[data-theme="light"] {
+  --bg: 244 240 230;        /* #F4F0E6 parchment */
+  --bg2: 233 226 211;       /* #E9E2D3 */
+  --card: 255 252 245;      /* #FFFCF5 */
+  --forest: 37 56 45;       /* #25382D */
+  --olive: 90 103 81;       /* #5A6751 */
+  --gold: 145 119 70;       /* #A58B58 darkened slightly for text contrast on parchment */
+  --walnut: 87 70 55;       /* #574637 */
+  --ink: 39 40 32;          /* #272820 */
+  --muted: 104 102 90;      /* #777568 deepened to meet WCAG AA on #F4F0E6 */
+  --line: 217 208 191;      /* #D9D0BF */
+  --danger: 155 59 47;
+  --success: 69 102 72;
+  --onforest: 244 240 230;
+  --shadow: 60 48 30;
+  --gold-raw: #A58B58;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: 21 27 23;           /* #151B17 */
+  --bg2: 32 40 32;          /* #202820 */
+  --card: 40 50 41;         /* #283229 */
+  --forest: 52 70 56;       /* #344638 */
+  --olive: 137 145 124;     /* #89917C */
+  --gold: 185 155 99;       /* #B99B63 */
+  --walnut: 181 160 132;
+  --ink: 233 225 210;       /* #E9E1D2 */
+  --muted: 181 176 159;     /* #B5B09F */
+  --line: 67 72 61;         /* #43483D */
+  --danger: 214 128 112;
+  --success: 150 181 140;
+  --onforest: 233 225 210;
+  --shadow: 0 0 0;
+  --gold-raw: #B99B63;
+  color-scheme: dark;
+}
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { @apply bg-bg font-sans text-ink; transition: background-color .35s ease, color .35s ease; }
+  h1, h2, h3, h4 { @apply font-serif; letter-spacing: -0.01em; }
+  ::selection { background: rgb(var(--gold) / .3); }
+  :focus-visible { outline: 2px solid rgb(var(--gold)); outline-offset: 2px; border-radius: 4px; }
+  input[type="date"]::-webkit-calendar-picker-indicator { filter: var(--date-filter, none); }
+  [data-theme="dark"] input[type="date"] { --date-filter: invert(.8); }
+}
+
+@layer components {
+  .eyebrow { @apply text-[11px] font-medium uppercase tracking-eyebrow text-gold; }
+  .card { @apply rounded-xl border border-line bg-card shadow-soft; }
+  .rule { @apply h-px w-full bg-line; }
+  .gold-rule { height: 1px; background: linear-gradient(90deg, transparent, rgb(var(--gold) / .7), transparent); }
+  .input {
+    @apply w-full rounded-md border border-line bg-card px-3 py-2 text-sm text-ink placeholder:text-muted/70
+      transition focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/25 disabled:opacity-60;
+  }
+  .label { @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted; }
+  .tabular { font-variant-numeric: tabular-nums; }
+  .paper-texture {
+    background-image:
+      radial-gradient(rgb(var(--walnut) / .035) 1px, transparent 1px),
+      radial-gradient(rgb(var(--walnut) / .025) 1px, transparent 1px);
+    background-size: 22px 22px, 13px 13px;
+    background-position: 0 0, 7px 9px;
+  }
+  .skeleton { @apply animate-pulse rounded-md bg-bg2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Recharts text follows theme */
+.recharts-text, .recharts-cartesian-axis-tick-value { fill: rgb(var(--muted)); font-size: 11px; }
+.recharts-cartesian-grid line { stroke: rgb(var(--line)); }
+.recharts-tooltip-cursor { fill: rgb(var(--bg2) / .6); }

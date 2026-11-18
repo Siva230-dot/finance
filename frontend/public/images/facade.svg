@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" preserveAspectRatio="xMidYMid slice">
+  <title>A neoclassical bank facade with columns at golden hour</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9c79f"/><stop offset=".6" stop-color="#ecdcb6"/><stop offset="1" stop-color="#f3e7cb"/></linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cdbb94"/><stop offset=".5" stop-color="#e8dcc0"/><stop offset="1" stop-color="#bfae88"/></linearGradient>
+    <linearGradient id="col" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a99670"/><stop offset=".35" stop-color="#efe4c9"/><stop offset=".7" stop-color="#d6c6a2"/><stop offset="1" stop-color="#9d8a64"/></linearGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3428" stop-opacity=".55"/><stop offset="1" stop-color="#3a3428" stop-opacity=".2"/></linearGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2"/><feColorMatrix values="0 0 0 0 .35  0 0 0 0 .3  0 0 0 0 .2  0 0 0 .25 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+  </defs>
+  <rect width="1000" height="1250" fill="url(#sky)"/>
+  <circle cx="820" cy="180" r="90" fill="#f6e2a8" opacity=".55"/>
+  <!-- pediment -->
+  <path d="M90 360 L500 150 L910 360 Z" fill="url(#stone)"/>
+  <path d="M140 345 L500 172 L860 345 Z" fill="none" stroke="#a58b58" stroke-width="3" opacity=".55"/>
+  <circle cx="500" cy="285" r="34" fill="none" stroke="#8f7a52" stroke-width="4"/><text x="500" y="298" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="34" fill="#6f5d3a">F</text>
+  <rect x="70" y="360" width="860" height="44" fill="#d8c8a4"/><rect x="70" y="404" width="860" height="14" fill="#b6a37c"/>
+  <text x="500" y="392" text-anchor="middle" font-family="Georgia,serif" font-size="22" letter-spacing="14" fill="#5d4d31">PRUDENTIA · FIDES</text>
+  <!-- colonnade shadow -->
+  <rect x="100" y="418" width="800" height="600" fill="#5a4c34" opacity=".35"/>
+  <rect x="380" y="560" width="240" height="458" fill="#2f2a20"/>
+  <path d="M380 560 a120 90 0 0 1 240 0" fill="#2f2a20"/>
+  <rect x="404" y="610" width="192" height="408" fill="#3b4a3c" opacity=".55"/>
+  <!-- columns -->
+  <g>
+    <g id="c">
+      <rect x="0" y="418" width="74" height="26" fill="#d9caa6"/>
+      <rect x="8" y="444" width="58" height="560" fill="url(#col)"/>
+      <g stroke="#9e8a62" stroke-opacity=".5" stroke-width="2"><line x1="20" y1="446" x2="20" y2="1002"/><line x1="32" y1="446" x2="32" y2="1002"/><line x1="44" y1="446" x2="44" y2="1002"/><line x1="56" y1="446" x2="56" y2="1002"/></g>
+      <rect x="0" y="1004" width="74" height="18" fill="#cbbb96"/>
+    </g>
+    <use href="#c" x="110"/><use href="#c" x="236"/><use href="#c" x="680"/><use href="#c" x="806"/>
+  </g>
+  <!-- steps -->
+  <rect x="40" y="1022" width="920" height="30" fill="#e2d4b4"/><rect x="20" y="1052" width="960" height="30" fill="#d3c4a0"/><rect x="0" y="1082" width="1000" height="30" fill="#c6b590"/>
+  <rect x="0" y="1112" width="1000" height="140" fill="#8f8466"/>
+  <rect x="0" y="1112" width="1000" height="140" fill="url(#shade)"/>
+  <!-- lamps -->
+  <g fill="#2a271f"><rect x="335" y="760" width="6" height="250"/><rect x="659" y="760" width="6" height="250"/></g>
+  <g fill="#f3d38a"><circle cx="338" cy="752" r="14"/><circle cx="662" cy="752" r="14"/></g>
+  <rect width="1000" height="1250" filter="url(#grain)" opacity=".55"/>
+</svg>
